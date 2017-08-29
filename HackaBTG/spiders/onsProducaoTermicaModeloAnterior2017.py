@@ -19,8 +19,8 @@ class OnsSpider(scrapy.Spider):
         countLoop=0
         dados=[]
 
-        for sel in response.xpath('td'):
-            textResponse = sel.xpath('/text()').extract_first() 
+        for sel in response.xpath('//td'):
+            textResponse = sel.xpath('text()').extract_first() 
             if(textResponse in submercados):
                 startGet=True
             if(startGet):
@@ -33,8 +33,7 @@ class OnsSpider(scrapy.Spider):
 
 
 
-        for num in range(2,7):
-           yield {
+        yield {
                 'tipo': "Termica",
                 'data':self.refDate,
                 'submercado': dados[0]
@@ -44,10 +43,10 @@ class OnsSpider(scrapy.Spider):
                 'MWhDia': None,
                 'MWhAcMes': None,
                 'MWhAcAno': None,
-            }
+        }
        
        
-        if (self.refDate <date.today()):
+       if(self.refDate<=date(2017, 1, 31)):
             self.refDate=self.refDate+timedelta(1)
             mes = str(self.refDate.month)
             if(self.refDate.month<10):
@@ -56,10 +55,6 @@ class OnsSpider(scrapy.Spider):
             if(self.refDate.day<10):
                 dia='0'+dia
             
-            if(self.refDate<date(2017, 5, 16)):
-                 item='08'
-            else:
-                 item='09'  
             url='http://sdro.ons.org.br/boletim_diario/{0}_{1}_{2}/HTML/geracao_arquivos/sheet002.htm'.format(self.refDate.year,mes,dia,item)
             yield scrapy.Request(url=url, callback=self.parse)
 
