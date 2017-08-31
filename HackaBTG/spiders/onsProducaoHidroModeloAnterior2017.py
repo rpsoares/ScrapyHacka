@@ -8,10 +8,9 @@ def first(sel, xpath):
 
 
 class OnsSpider(scrapy.Spider):
-    name = 'onsProducaoTermicaModeloAnterior2017'
-    #29122005
-    start_urls = ['http://sdro.ons.org.br/boletim_diario/2008_05_20/geracao_arquivos/sheet002.htm']
-    refDate = date(2008,5, 20)
+    name = 'onsProducaoHidroModeloAnterior2017'
+    start_urls = ['http://sdro.ons.org.br/boletim_diario/2005_12_29/geracao_arquivos/sheet001.htm']
+    refDate = date(2005,12, 29)
     submercados =['SE/CO','Itaipu','S','NE','N','SIN']
     def parse(self, response):
 
@@ -34,7 +33,7 @@ class OnsSpider(scrapy.Spider):
                     startGet=False
                     countLoop=0
                     yield {
-                        'tipo': "Termica",
+                        'tipo': "Hidraulica",
                         'data':self.refDate,
                         'submercado': dados[0],
                         'GWhDia': dados[1],
@@ -60,7 +59,7 @@ class OnsSpider(scrapy.Spider):
              if(self.refDate.day<10):
                  dia='0'+dia
             
-             url='http://sdro.ons.org.br/boletim_diario/{0}_{1}_{2}/geracao_arquivos/sheet002.htm'.format(self.refDate.year,mes,dia)
+             url='http://sdro.ons.org.br/boletim_diario/{0}_{1}_{2}/geracao_arquivos/sheet001.htm'.format(self.refDate.year,mes,dia)
              yield scrapy.Request(url=url, callback=self.parse)
 
   

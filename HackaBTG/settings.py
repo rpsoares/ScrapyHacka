@@ -23,11 +23,13 @@ ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 CONCURRENT_REQUESTS = 32
-
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 1
+#AUTOTHROTTLE_ENABLED = True
+#AUTOTHROTTLE_START_DELAY = 1
+#AUTOTHROTTLE_MAX_DELAY = 3
 # The download delay setting will honor only one of:
 CONCURRENT_REQUESTS_PER_DOMAIN = 100
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -88,3 +90,18 @@ CONCURRENT_REQUESTS_PER_DOMAIN = 100
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+#FEED_URI = 'file://export.csv'
+
+FEED_URI = 'teste.csv'
+FEED_FORMAT = 'csv'
+FEED_EXPORT_FIELDS = None
+FEED_STORE_EMPTY = False
+FEED_STORAGES = {}
+FEED_STORAGES_BASE = { 
+'': None,
+'file': None,
+'stdout': None,
+'s3': None,
+'ftp': None,
+'csv': 'scrapy.exporters.CsvItemExporter',
+}
