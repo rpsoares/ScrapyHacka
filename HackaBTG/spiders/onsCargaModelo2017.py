@@ -17,6 +17,7 @@ class OnsSpider(scrapy.Spider):
 
         path = response.url.split('/')[-1]
         self.logger.info('Saving xls %s', path)
+        
         with open(path, 'wb') as f:
             f.write(response.body)
        

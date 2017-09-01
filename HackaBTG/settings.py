@@ -92,16 +92,16 @@ CONCURRENT_REQUESTS_PER_DOMAIN = 100
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 #FEED_URI = 'file://export.csv'
 
-FEED_URI = 'teste.csv'
-FEED_FORMAT = 'csv'
-FEED_EXPORT_FIELDS = None
-FEED_STORE_EMPTY = False
-FEED_STORAGES = {}
-FEED_STORAGES_BASE = { 
-'': None,
-'file': None,
-'stdout': None,
-'s3': None,
-'ftp': None,
-'csv': 'scrapy.exporters.CsvItemExporter',
-}
+# FEED_URI = 'teste.csv'
+# FEED_FORMAT = 'csv'
+# FEED_EXPORT_FIELDS = None
+# FEED_STORE_EMPTY = False
+# FEED_STORAGES = {}
+# FEED_STORAGES_BASE = { 
+# '': None,
+# 'file': None,
+# 'stdout': None,
+# 's3': None,
+# 'ftp': None,
+# 'csv': 'scrapy.exporters.CsvItemExporter',
+# }

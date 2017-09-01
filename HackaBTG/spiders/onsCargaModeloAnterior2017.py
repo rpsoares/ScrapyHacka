@@ -11,6 +11,7 @@ class OnsSpider(scrapy.Spider):
     name = 'onsCargaModeloAnterior2017'
     start_urls = ['http://sdro.ons.org.br/boletim_diario/2005_08_03/carga_arquivos/sheet001.htm']
     refDate = date(2005,8, 3)
+    jumpDates =[date(2008,4,11),date(2011,7,10),date(2017,1,30)]
     submercados =['SE/CO','Itaipu','S','NE','N','SIN']
     def parse(self, response):
 
@@ -51,6 +52,11 @@ class OnsSpider(scrapy.Spider):
        
         if(self.refDate<=date(2017, 1, 31)):
              self.refDate=self.refDate+timedelta(1)
+
+             while (self.refDate in self.jumpDates):
+                 self.refDate=self.refDate+timedelta(1)
+
+
              mes = str(self.refDate.month)
              if(self.refDate.month<10):
                  mes='0'+mes
