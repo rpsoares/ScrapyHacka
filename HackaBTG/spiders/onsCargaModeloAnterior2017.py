@@ -21,8 +21,8 @@ class OnsSpider(scrapy.Spider):
         dados=[]
 
         for sel in response.xpath('//td'):
-             textResponse = sel.xpath('text()').extract_first() 
-            
+             textResponse = sel.xpath('text()').extract_first()
+
              if(textResponse in self.submercados):
                  print (textResponse)
                  startGet=True
@@ -48,8 +48,8 @@ class OnsSpider(scrapy.Spider):
 
 
 
-       
-       
+
+
         if(self.refDate<=date(2017, 1, 31)):
              self.refDate=self.refDate+timedelta(1)
 
@@ -63,9 +63,6 @@ class OnsSpider(scrapy.Spider):
              dia = str(self.refDate.day)
              if(self.refDate.day<10):
                  dia='0'+dia
-            
+
              url='http://sdro.ons.org.br/boletim_diario/{0}_{1}_{2}/carga_arquivos/sheet001.htm'.format(self.refDate.year,mes,dia)
              yield scrapy.Request(url=url, callback=self.parse)
-
-  
-       
