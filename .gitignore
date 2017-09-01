@@ -4,3 +4,4 @@
 # User-specific files
 *.json
 *.svc
+*.pyc
