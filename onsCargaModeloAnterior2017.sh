@@ -1,2 +1,0 @@
-scrapy crawl onsCargaModeloAnterior2017 -o onsCargaModeloAnterior2017.json
-python UploadOnsCargaModeloAnterior2017.py "onsCargaModeloAnterior2017.json" "hackadirtyfiles" "Carga/onsCargaModeloAnterior2017.json" 
